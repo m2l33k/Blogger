@@ -1,0 +1,45 @@
+<main class="container">
+  <section class="hero" *ngIf="post as p; else missing">
+    <div class="hero-kicker">/p/{{ p.slug }}</div>
+    <h1 class="hero-title">{{ p.title }}</h1>
+    <p class="hero-subtitle" *ngIf="p.excerpt">{{ p.excerpt }}</p>
+  </section>
+
+  <section class="content" *ngIf="post as p; else missing">
+    <div class="meta">
+      <span class="pill">{{ p.section }}</span>
+      <span class="pill">{{ p.status }}</span>
+      <span class="sep">•</span>
+      <span class="mono">updated {{ p.updatedAt | date: 'medium' }}</span>
+    </div>
+
+    <div class="body">{{ p.content }}</div>
+  </section>
+
+  <ng-template #missing>
+    <section class="hero">
+      <div class="hero-kicker">/p</div>
+      <h1 class="hero-title">Not Found</h1>
+      <p class="hero-subtitle">This post does not exist, or it is not published.</p>
+    </section>
+
+    <section class="bento" style="padding-top: 10px;">
+      <a class="tile span-6" routerLink="/">
+        <h2 class="tile-title">
+          <span class="tile-badge">home</span>
+          Return Home
+        </h2>
+        <p class="tile-desc">Back to the landing page.</p>
+      </a>
+
+      <a class="tile span-6" routerLink="/admin/posts">
+        <h2 class="tile-title">
+          <span class="tile-badge">admin</span>
+          Check Admin
+        </h2>
+        <p class="tile-desc">Publish the post in the back office to make it public.</p>
+      </a>
+    </section>
+  </ng-template>
+</main>
+

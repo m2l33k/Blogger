@@ -1,0 +1,58 @@
+:host {
+  display: block;
+  padding-bottom: 60px;
+}
+
+.panel {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 16px;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.field:first-child {
+  margin-top: 0;
+}
+
+.textarea {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--text);
+  padding: 10px 12px;
+  outline: none;
+  font-family: var(--mono);
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.textarea:focus {
+  border-color: rgba(0, 255, 65, 0.35);
+  box-shadow: 0 0 0 3px rgba(0, 255, 65, 0.08);
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.button.secondary {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.error {
+  margin-top: 14px;
+  color: var(--red);
+  font-family: var(--mono);
+  font-size: 12px;
+}
+

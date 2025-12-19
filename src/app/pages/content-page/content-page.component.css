@@ -2,3 +2,70 @@
   display: block;
   padding-bottom: 60px;
 }
+
+.post-list {
+  margin-top: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.post-row {
+  display: block;
+  padding: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+
+.post-row:first-child {
+  border-top: none;
+}
+
+.post-row:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.post-title {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--text);
+}
+
+.post-excerpt {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.post-meta {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  font-family: var(--mono);
+  font-size: 11px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  padding: 4px 8px;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.mono {
+  font-family: var(--mono);
+}
+
+.sep {
+  opacity: 0.55;
+}
+
+.post-empty {
+  margin-top: 14px;
+}

@@ -1,0 +1,18 @@
+<div class="container">
+  <header class="admin-topbar">
+    <div class="brand">
+      <div class="brand-title">Admin</div>
+      <div class="brand-tag" *ngIf="auth.username as u">user: {{ u }}</div>
+    </div>
+
+    <nav class="admin-nav">
+      <a routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
+      <a routerLink="/admin/posts" routerLinkActive="active">Posts</a>
+      <a routerLink="/" routerLinkActive="active">Public</a>
+      <button class="admin-logout" type="button" (click)="logout()">logout</button>
+    </nav>
+  </header>
+</div>
+
+<router-outlet></router-outlet>
+

@@ -1,0 +1,54 @@
+<main class="container">
+  <section class="hero">
+    <div class="hero-kicker">/admin/posts/{{ mode }}</div>
+    <h1 class="hero-title">{{ mode === 'new' ? 'New Post' : 'Edit Post' }}</h1>
+    <p class="hero-subtitle">Use Markdown in content. Publish when ready.</p>
+  </section>
+
+  <section class="panel">
+    <div class="field">
+      <div class="label">title</div>
+      <input class="input" name="title" [(ngModel)]="form.title" />
+    </div>
+
+    <div class="field">
+      <div class="label">section</div>
+      <select class="input" name="section" [(ngModel)]="form.section">
+        <option value="cheat-sheets">0x01 — cheat sheets</option>
+        <option value="tutorials">0x02 — tutorials</option>
+        <option value="toolset">0x03 — toolset</option>
+        <option value="manifesto">0x04 — manifesto</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <div class="label">excerpt</div>
+      <textarea class="textarea" name="excerpt" [(ngModel)]="form.excerpt" rows="3"></textarea>
+    </div>
+
+    <div class="field">
+      <div class="label">tags (comma separated)</div>
+      <input class="input" name="tags" [(ngModel)]="form.tags" />
+    </div>
+
+    <div class="field">
+      <div class="label">status</div>
+      <select class="input" name="status" [(ngModel)]="form.status">
+        <option value="draft">draft</option>
+        <option value="published">published</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <div class="label">content</div>
+      <textarea class="textarea" name="content" [(ngModel)]="form.content" rows="14"></textarea>
+    </div>
+
+    <div class="error" *ngIf="error">{{ error }}</div>
+
+    <div class="actions">
+      <button class="button" type="button" (click)="save()">save</button>
+      <button class="button secondary" type="button" (click)="cancel()">cancel</button>
+    </div>
+  </section>
+</main>

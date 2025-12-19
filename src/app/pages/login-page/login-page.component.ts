@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 type LoginStatus = { kind: 'idle' } | { kind: 'error'; message: string } | { kind: 'ok'; message: string };
 
@@ -12,12 +14,21 @@ export class LoginPageComponent {
   password = '';
   status: LoginStatus = { kind: 'idle' };
 
+  constructor(
+    private readonly auth: AuthService,
+    private readonly router: Router,
+    private readonly route: ActivatedRoute
+  ) {}
+
   onSubmit(): void {
-    if (!this.username.trim() || !this.password) {
-      this.status = { kind: 'error', message: 'ERR: missing credentials' };
+    const result = this.auth.login(this.username, this.password);
+    if (!result.ok) {
+      this.status = { kind: 'error', message: result.message };
       return;
     }
 
-    this.status = { kind: 'error', message: 'ERR: access denied (stub)' };
+    const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
+    this.status = { kind: 'ok', message: 'OK: authenticated' };
+    this.router.navigateByUrl(returnUrl || '/admin');
   }
 }

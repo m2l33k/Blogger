@@ -6,20 +6,48 @@
   </section>
 
   <section class="bento" style="padding-top: 10px;">
-    <div class="tile span-6">
+    <a class="tile span-6" routerLink="/admin/posts">
       <h2 class="tile-title">
-        <span class="tile-badge">draft</span>
-        Coming Online
+        <span class="tile-badge">admin</span>
+        Manage Posts
       </h2>
-      <p class="tile-desc">Wire this section to your headless CMS and render content with SEO-friendly routes.</p>
-    </div>
+      <p class="tile-desc">Create or publish posts for this section from the back office.</p>
+    </a>
 
     <div class="tile span-6">
       <h2 class="tile-title">
-        <span class="tile-badge">todo</span>
-        Content Model
+        <span class="tile-badge">seo</span>
+        Public Pages
       </h2>
-      <p class="tile-desc">Posts, tags, authors, and a search index tuned for quick lookup.</p>
+      <p class="tile-desc">Published posts appear below and open on clean, shareable URLs.</p>
+    </div>
+  </section>
+
+  <section class="post-list" *ngIf="posts.length > 0">
+    <a class="post-row" *ngFor="let post of posts" [routerLink]="['/p', post.slug]">
+      <div class="post-title">{{ post.title }}</div>
+      <div class="post-excerpt" *ngIf="post.excerpt">{{ post.excerpt }}</div>
+      <div class="post-meta">
+        <span class="pill">{{ post.section }}</span>
+        <span class="sep">•</span>
+        <span class="mono">/{{ post.slug }}</span>
+      </div>
+    </a>
+  </section>
+
+  <section class="post-empty" *ngIf="posts.length === 0">
+    <div class="terminal-shell">
+      <div class="terminal-bar">
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot"></span>
+      </div>
+      <div class="terminal-body">
+        <div style="font-family: var(--mono); font-size: 13px; color: rgba(255, 255, 255, 0.85);">
+          $ query posts --section {{ section }} --status published
+        </div>
+        <div class="note">No published posts yet. Create one in `/admin/posts` and set status to `published`.</div>
+      </div>
     </div>
   </section>
 </main>

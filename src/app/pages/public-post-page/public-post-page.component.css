@@ -1,0 +1,45 @@
+:host {
+  display: block;
+  padding-bottom: 60px;
+}
+
+.content {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 16px;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.pill {
+  font-family: var(--mono);
+  font-size: 11px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  padding: 4px 8px;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.mono {
+  font-family: var(--mono);
+}
+
+.sep {
+  opacity: 0.55;
+}
+
+.body {
+  margin-top: 14px;
+  white-space: pre-wrap;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.88);
+}
+

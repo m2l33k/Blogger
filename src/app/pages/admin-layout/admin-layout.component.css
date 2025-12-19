@@ -1,0 +1,44 @@
+:host {
+  display: block;
+}
+
+.admin-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0 10px;
+}
+
+.admin-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-nav a {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--muted);
+  padding: 8px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.admin-nav a.active {
+  color: var(--text);
+  border-color: rgba(0, 255, 65, 0.35);
+  box-shadow: 0 0 0 3px rgba(0, 255, 65, 0.08);
+}
+
+.admin-logout {
+  height: 34px;
+  padding: 0 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(219, 0, 0, 0.45);
+  background: rgba(219, 0, 0, 0.1);
+  color: var(--text);
+  font-family: var(--mono);
+  cursor: pointer;
+}
+
