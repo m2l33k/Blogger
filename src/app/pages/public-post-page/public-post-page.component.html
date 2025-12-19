@@ -6,11 +6,22 @@
   </section>
 
   <section class="content" *ngIf="post as p; else missing">
+    <img class="cover" *ngIf="p.coverImage as img" [src]="img.dataUrl" alt="" />
+
     <div class="meta">
       <span class="pill">{{ p.section }}</span>
       <span class="pill">{{ p.status }}</span>
       <span class="sep">•</span>
       <span class="mono">updated {{ p.updatedAt | date: 'medium' }}</span>
+    </div>
+
+    <div class="links" *ngIf="p.externalUrl || p.pdf">
+      <a class="link" *ngIf="p.externalUrl as url" [href]="url" target="_blank" rel="noopener noreferrer">
+        open url
+      </a>
+      <a class="link" *ngIf="p.pdf as pdf" [href]="pdf.dataUrl" [attr.download]="pdf.name">
+        download pdf
+      </a>
     </div>
 
     <div class="body">{{ p.content }}</div>
@@ -42,4 +53,3 @@
     </section>
   </ng-template>
 </main>
-

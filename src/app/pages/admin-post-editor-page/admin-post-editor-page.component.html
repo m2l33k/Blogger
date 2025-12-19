@@ -22,6 +22,30 @@
     </div>
 
     <div class="field">
+      <div class="label">external url (optional)</div>
+      <input class="input" name="externalUrl" [(ngModel)]="form.externalUrl" placeholder="https://..." />
+    </div>
+
+    <div class="field">
+      <div class="label">cover image (optional)</div>
+      <input type="file" accept="image/*" (change)="onPickCoverImage($event)" />
+      <div class="file-row" *ngIf="form.coverImage as img">
+        <div class="file-name">{{ img.name }}</div>
+        <button class="mini" type="button" (click)="clearCoverImage()">remove</button>
+      </div>
+      <img class="cover-preview" *ngIf="form.coverImage as img" [src]="img.dataUrl" alt="" />
+    </div>
+
+    <div class="field">
+      <div class="label">pdf attachment (optional)</div>
+      <input type="file" accept="application/pdf" (change)="onPickPdf($event)" />
+      <div class="file-row" *ngIf="form.pdf as pdf">
+        <div class="file-name">{{ pdf.name }}</div>
+        <button class="mini" type="button" (click)="clearPdf()">remove</button>
+      </div>
+    </div>
+
+    <div class="field">
       <div class="label">excerpt</div>
       <textarea class="textarea" name="excerpt" [(ngModel)]="form.excerpt" rows="3"></textarea>
     </div>

@@ -3,6 +3,13 @@ import { Injectable } from '@angular/core';
 export type PostStatus = 'draft' | 'published';
 export type PostSection = 'cheat-sheets' | 'tutorials' | 'toolset' | 'manifesto';
 
+export type PostFile = {
+  name: string;
+  mime: string;
+  size: number;
+  dataUrl: string;
+};
+
 export type Post = {
   id: string;
   title: string;
@@ -12,6 +19,9 @@ export type Post = {
   tags: string[];
   section: PostSection;
   status: PostStatus;
+  externalUrl?: string;
+  coverImage?: PostFile;
+  pdf?: PostFile;
   createdAt: string;
   updatedAt: string;
 };
@@ -48,6 +58,9 @@ export class PostService {
       tags: input.tags ?? [],
       section: input.section,
       status: input.status,
+      externalUrl: input.externalUrl,
+      coverImage: input.coverImage,
+      pdf: input.pdf,
       createdAt: now,
       updatedAt: now
     };
@@ -154,6 +167,10 @@ export class PostService {
       ? input.section
       : this.inferSectionFromTags(tags) ?? ('tutorials' as const);
 
+    const externalUrl = this.coerceExternalUrl(input.externalUrl);
+    const coverImage = this.coerceFile(input.coverImage, ['image/']);
+    const pdf = this.coerceFile(input.pdf, ['application/pdf']);
+
     return {
       id: input.id,
       title: input.title,
@@ -163,6 +180,9 @@ export class PostService {
       tags,
       section,
       status,
+      externalUrl,
+      coverImage,
+      pdf,
       createdAt: typeof input.createdAt === 'string' ? input.createdAt : new Date().toISOString(),
       updatedAt: typeof input.updatedAt === 'string' ? input.updatedAt : new Date().toISOString()
     };
@@ -187,5 +207,35 @@ export class PostService {
       return 'manifesto';
     }
     return null;
+  }
+
+  private coerceExternalUrl(value: any): string | undefined {
+    if (typeof value !== 'string') {
+      return undefined;
+    }
+    const trimmed = value.trim();
+    if (!trimmed) {
+      return undefined;
+    }
+    return trimmed;
+  }
+
+  private coerceFile(value: any, allowedMimePrefixes: string[]): PostFile | undefined {
+    if (!value || typeof value !== 'object') {
+      return undefined;
+    }
+    const name = typeof value.name === 'string' ? value.name : '';
+    const mime = typeof value.mime === 'string' ? value.mime : '';
+    const size = typeof value.size === 'number' ? value.size : 0;
+    const dataUrl = typeof value.dataUrl === 'string' ? value.dataUrl : '';
+
+    if (!name || !mime || !dataUrl) {
+      return undefined;
+    }
+    const allowed = allowedMimePrefixes.some((p) => mime.startsWith(p));
+    if (!allowed) {
+      return undefined;
+    }
+    return { name, mime, size, dataUrl };
   }
 }

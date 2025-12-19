@@ -6,25 +6,26 @@
   </section>
 
   <section class="bento" style="padding-top: 10px;">
-    <a class="tile span-6" routerLink="/admin/posts">
+    <div class="tile span-6">
       <h2 class="tile-title">
-        <span class="tile-badge">admin</span>
-        Manage Posts
+        <span class="tile-badge">index</span>
+        Published Posts
       </h2>
-      <p class="tile-desc">Create or publish posts for this section from the back office.</p>
-    </a>
+      <p class="tile-desc">Posts show up here only after they are published.</p>
+    </div>
 
     <div class="tile span-6">
       <h2 class="tile-title">
-        <span class="tile-badge">seo</span>
-        Public Pages
+        <span class="tile-badge">url</span>
+        Shareable Links
       </h2>
-      <p class="tile-desc">Published posts appear below and open on clean, shareable URLs.</p>
+      <p class="tile-desc">Each post gets a stable URL: `/p/&lt;slug&gt;`.</p>
     </div>
   </section>
 
   <section class="post-list" *ngIf="posts.length > 0">
     <a class="post-row" *ngFor="let post of posts" [routerLink]="['/p', post.slug]">
+      <img class="post-cover" *ngIf="post.coverImage as img" [src]="img.dataUrl" alt="" />
       <div class="post-title">{{ post.title }}</div>
       <div class="post-excerpt" *ngIf="post.excerpt">{{ post.excerpt }}</div>
       <div class="post-meta">

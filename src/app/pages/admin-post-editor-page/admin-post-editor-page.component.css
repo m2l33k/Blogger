@@ -44,6 +44,46 @@
   margin-top: 16px;
 }
 
+.file-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.file-name {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.85);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mini {
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(219, 0, 0, 0.45);
+  background: rgba(219, 0, 0, 0.1);
+  color: var(--text);
+  font-family: var(--mono);
+  cursor: pointer;
+}
+
+.cover-preview {
+  width: 100%;
+  max-height: 260px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.35);
+}
+
 .button.secondary {
   border-color: rgba(255, 255, 255, 0.14);
   background: rgba(255, 255, 255, 0.03);
@@ -55,4 +95,3 @@
   font-family: var(--mono);
   font-size: 12px;
 }
-
