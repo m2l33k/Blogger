@@ -44,6 +44,11 @@ const routes: Routes = [
     component: ContentPageComponent,
     data: { title: '0x04 — Manifesto', subtitle: 'Principles, threat models, and craft.', section: 'manifesto' }
   },
+  {
+    path: 'pfe-books',
+    component: ContentPageComponent,
+    data: { title: '0x05 — PFE Books', subtitle: 'PDFs, writeups, and references for project work.', section: 'pfe-books' }
+  },
   { path: 'p/:slug', component: PublicPostPageComponent },
   { path: '**', redirectTo: '' }
 ];

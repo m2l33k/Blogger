@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 export type PostStatus = 'draft' | 'published';
-export type PostSection = 'cheat-sheets' | 'tutorials' | 'toolset' | 'manifesto';
+export type PostSection = 'cheat-sheets' | 'tutorials' | 'toolset' | 'manifesto' | 'pfe-books';
 
 export type PostFile = {
   name: string;
@@ -189,7 +189,13 @@ export class PostService {
   }
 
   private isSection(value: any): value is PostSection {
-    return value === 'cheat-sheets' || value === 'tutorials' || value === 'toolset' || value === 'manifesto';
+    return (
+      value === 'cheat-sheets' ||
+      value === 'tutorials' ||
+      value === 'toolset' ||
+      value === 'manifesto' ||
+      value === 'pfe-books'
+    );
   }
 
   private inferSectionFromTags(tags: string[]): PostSection | null {
@@ -205,6 +211,9 @@ export class PostService {
     }
     if (lowered.includes('manifesto') || lowered.includes('0x04')) {
       return 'manifesto';
+    }
+    if (lowered.includes('pfe-books') || lowered.includes('books') || lowered.includes('pfe') || lowered.includes('0x05')) {
+      return 'pfe-books';
     }
     return null;
   }
