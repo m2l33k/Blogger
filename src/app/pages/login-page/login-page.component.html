@@ -1,0 +1,56 @@
+<main class="container">
+  <section class="hero">
+    <div class="hero-kicker">/login • isolated admin portal</div>
+    <h1 class="hero-title">Secure Terminal</h1>
+    <p class="hero-subtitle">
+      Authenticate to access the headless CMS admin. This interface is intentionally segregated and minimal.
+    </p>
+  </section>
+
+  <section class="terminal-shell">
+    <div class="terminal-bar">
+      <span class="terminal-dot"></span>
+      <span class="terminal-dot"></span>
+      <span class="terminal-dot"></span>
+      <span style="margin-left: 8px; font-family: var(--mono); font-size: 12px; color: rgba(255, 255, 255, 0.72);">
+        session://null_pointer
+      </span>
+    </div>
+    <div class="terminal-body">
+      <div style="font-family: var(--mono); font-size: 13px; color: rgba(255, 255, 255, 0.85);">
+        $ auth --target cms --mode strict
+      </div>
+
+      <form (ngSubmit)="onSubmit()" style="margin-top: 14px;">
+        <div class="field">
+          <div class="label">username</div>
+          <input class="input" name="username" [(ngModel)]="username" autocomplete="username" />
+        </div>
+        <div class="field">
+          <div class="label">password</div>
+          <input
+            class="input"
+            type="password"
+            name="password"
+            [(ngModel)]="password"
+            autocomplete="current-password"
+          />
+        </div>
+
+        <button class="button" type="submit">enter</button>
+      </form>
+
+      <div
+        *ngIf="status.kind !== 'idle'"
+        style="margin-top: 14px; font-family: var(--mono); font-size: 12px;"
+        [style.color]="status.kind === 'error' ? 'var(--red)' : 'var(--green)'"
+      >
+        {{ status.message }}
+      </div>
+
+      <div class="note">
+        Backend wiring comes next: connect this route to a headless CMS (Sanity/Strapi) and enforce auth & CSP.
+      </div>
+    </div>
+  </section>
+</main>
