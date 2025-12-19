@@ -30,6 +30,22 @@ body {
   letter-spacing: 0.2px;
 }
 
+app-root {
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.matrix-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.18;
+  mix-blend-mode: screen;
+  filter: blur(0.2px);
+}
+
 h1,
 h2,
 h3,
@@ -65,6 +81,8 @@ a {
 .container {
   width: min(1120px, calc(100% - 40px));
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 .topbar {
@@ -86,6 +104,11 @@ a {
   font-size: 14px;
   letter-spacing: 0.8px;
   text-transform: uppercase;
+}
+
+.brand-title::before {
+  content: "> ";
+  color: var(--green);
 }
 
 .brand-tag {
@@ -111,8 +134,8 @@ a {
 
 .nav a:hover {
   color: var(--text);
-  border-color: rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(219, 0, 0, 0.45);
+  background: rgba(219, 0, 0, 0.07);
 }
 
 .hero {
