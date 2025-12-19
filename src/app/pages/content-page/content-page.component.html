@@ -23,18 +23,36 @@
     </div>
   </section>
 
-  <section class="post-list" *ngIf="posts.length > 0">
-    <a class="post-row" *ngFor="let post of posts" [routerLink]="['/p', post.slug]">
-      <img class="post-cover" *ngIf="post.coverImage as img" [src]="img.dataUrl" alt="" />
-      <div class="post-title">{{ post.title }}</div>
-      <div class="post-excerpt" *ngIf="post.excerpt">{{ post.excerpt }}</div>
-      <div class="post-meta">
-        <span class="pill">{{ post.section }}</span>
-        <span class="sep">•</span>
-        <span class="mono">/{{ post.slug }}</span>
+  <section class="post-grid" *ngIf="posts.length > 0">
+    <a class="card" *ngFor="let post of pagePosts" [routerLink]="['/p', post.slug]">
+      <div class="thumb" *ngIf="post.coverImage as img">
+        <img [src]="img.dataUrl" alt="" />
+      </div>
+      <div class="card-body">
+        <div class="card-title">{{ post.title }}</div>
+        <div class="card-excerpt" *ngIf="post.excerpt">{{ post.excerpt }}</div>
+        <div class="card-meta">
+          <span class="pill">{{ post.section }}</span>
+          <span class="sep">•</span>
+          <span class="mono">/{{ post.slug }}</span>
+        </div>
       </div>
     </a>
   </section>
+
+  <nav class="pagination" *ngIf="posts.length > 0 && totalPages > 1">
+    <button class="page-btn" type="button" [disabled]="page === 1" (click)="setPage(page - 1)">prev</button>
+    <button
+      class="page-btn"
+      *ngFor="let p of pages"
+      type="button"
+      [class.active]="p === page"
+      (click)="setPage(p)"
+    >
+      {{ p }}
+    </button>
+    <button class="page-btn" type="button" [disabled]="page === totalPages" (click)="setPage(page + 1)">next</button>
+  </nav>
 
   <section class="post-empty" *ngIf="posts.length === 0">
     <div class="terminal-shell">
