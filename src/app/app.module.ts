@@ -11,6 +11,7 @@ import { AdminPostListPageComponent } from './pages/admin-post-list-page/admin-p
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ContentPageComponent } from './pages/content-page/content-page.component';
+import { LiveAttacksPageComponent } from './pages/live-attacks-page/live-attacks-page.component';
 import { PublicPostPageComponent } from './pages/public-post-page/public-post-page.component';
 
 @NgModule({
@@ -23,6 +24,7 @@ import { PublicPostPageComponent } from './pages/public-post-page/public-post-pa
     HomePageComponent,
     LoginPageComponent,
     ContentPageComponent,
+    LiveAttacksPageComponent,
     PublicPostPageComponent
   ],
   imports: [

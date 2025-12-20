@@ -1,0 +1,17 @@
+<main class="container">
+  <section class="hero">
+    <div class="hero-kicker">/live • telemetry: external</div>
+    <h1 class="hero-title">Live Attacks</h1>
+    <p class="hero-subtitle">
+      Embedded view of Radware’s live threat map. If the embed is blocked, open it in a new tab.
+    </p>
+    <div class="actions">
+      <a class="btn" [href]="externalUrl" target="_blank" rel="noopener noreferrer">Open Live Threat Map</a>
+    </div>
+  </section>
+
+  <section class="frame">
+    <iframe class="map" [src]="mapUrl" title="Live Threat Map" loading="lazy"></iframe>
+  </section>
+</main>
+

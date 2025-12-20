@@ -2,12 +2,14 @@
 
 <div class="crt-overlay"></div>
 
-<div class="container">
-  <header class="topbar">
+<header class="topbar">
+  <div class="container topbar-inner">
     <div class="brand">
+      <div class="brand-mark" aria-hidden="true"></div>
       <div class="brand-title">Project NULL_POINTER</div>
       <div class="brand-tag">Cyber-noir technical resource hub</div>
     </div>
+
     <nav class="nav">
       <a routerLink="/">Home</a>
       <a routerLink="/cheat-sheets">0x01</a>
@@ -15,9 +17,10 @@
       <a routerLink="/toolset">0x03</a>
       <a routerLink="/manifesto">0x04</a>
       <a routerLink="/pfe-books">0x05</a>
-      <a routerLink="/login">/login</a>
+      <a routerLink="/live-attacks">live</a>
+      <a routerLink="/login" class="cta">Contact</a>
     </nav>
-  </header>
-</div>
+  </div>
+</header>
 
 <router-outlet></router-outlet>

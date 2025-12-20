@@ -8,6 +8,7 @@ import { AdminPostListPageComponent } from './pages/admin-post-list-page/admin-p
 import { ContentPageComponent } from './pages/content-page/content-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { LiveAttacksPageComponent } from './pages/live-attacks-page/live-attacks-page.component';
 import { PublicPostPageComponent } from './pages/public-post-page/public-post-page.component';
 
 const routes: Routes = [
@@ -49,6 +50,7 @@ const routes: Routes = [
     component: ContentPageComponent,
     data: { title: '0x05 — PFE Books', subtitle: 'PDFs, writeups, and references for project work.', section: 'pfe-books' }
   },
+  { path: 'live-attacks', component: LiveAttacksPageComponent },
   { path: 'p/:slug', component: PublicPostPageComponent },
   { path: '**', redirectTo: '' }
 ];

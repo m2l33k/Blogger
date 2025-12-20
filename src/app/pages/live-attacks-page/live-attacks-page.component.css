@@ -1,0 +1,43 @@
+:host {
+  display: block;
+  padding-bottom: 60px;
+}
+
+.actions {
+  margin-top: 14px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  padding: 0 16px;
+  border-radius: 12px;
+  font-family: var(--mono);
+  font-size: 13px;
+  border: 1px solid rgba(44, 246, 196, 0.55);
+  background: rgba(44, 246, 196, 0.08);
+  color: var(--text);
+}
+
+.btn:hover {
+  border-color: rgba(44, 246, 196, 0.85);
+  background: rgba(44, 246, 196, 0.12);
+}
+
+.frame {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.25);
+  height: min(76vh, 820px);
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: rgba(0, 0, 0, 0.35);
+}
+

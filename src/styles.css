@@ -1,11 +1,15 @@
 :root {
-  --bg: #0a0a0a;
+  --bg: #050607;
   --panel: rgba(255, 255, 255, 0.04);
   --panel-border: rgba(255, 255, 255, 0.08);
   --text: rgba(255, 255, 255, 0.92);
   --muted: rgba(255, 255, 255, 0.62);
   --red: #db0000;
   --green: #00ff41;
+  --accent: #2cf6c4;
+  --accent-2: #00c2ff;
+  --grid: rgba(44, 246, 196, 0.08);
+  --grid-2: rgba(44, 246, 196, 0.04);
   --mono: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
     monospace;
   --sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
@@ -22,12 +26,39 @@ body {
 
 body {
   margin: 0;
-  background: radial-gradient(1200px 700px at 70% -10%, rgba(219, 0, 0, 0.16), transparent 60%),
-    radial-gradient(900px 600px at 10% 10%, rgba(0, 255, 65, 0.12), transparent 55%),
-    linear-gradient(180deg, #070707, var(--bg));
+  background: radial-gradient(1200px 700px at 75% 10%, rgba(0, 194, 255, 0.12), transparent 60%),
+    radial-gradient(1100px 800px at 20% 0%, rgba(44, 246, 196, 0.1), transparent 55%),
+    radial-gradient(900px 700px at 90% 75%, rgba(44, 246, 196, 0.08), transparent 55%),
+    linear-gradient(180deg, #040405, var(--bg));
   color: var(--text);
   font-family: var(--sans);
   letter-spacing: 0.2px;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: linear-gradient(var(--grid-2) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-2) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(900px 700px at 65% 30%, rgba(0, 0, 0, 1), transparent 70%);
+  opacity: 0.9;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 320px 320px;
+  mask-image: radial-gradient(800px 620px at 72% 35%, rgba(0, 0, 0, 1), transparent 70%);
+  opacity: 0.25;
 }
 
 app-root {
@@ -41,7 +72,7 @@ app-root {
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.18;
+  opacity: 0.14;
   mix-blend-mode: screen;
   filter: blur(0.2px);
 }
@@ -86,6 +117,15 @@ a {
 }
 
 .topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(180deg, rgba(5, 6, 7, 0.9), rgba(5, 6, 7, 0.55));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.topbar-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -107,8 +147,17 @@ a {
 }
 
 .brand-title::before {
-  content: "> ";
-  color: var(--green);
+  content: "";
+}
+
+.brand-mark {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(44, 246, 196, 0.55);
+  box-shadow: inset 0 0 0 3px rgba(44, 246, 196, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.55);
+  background: radial-gradient(circle at 30% 30%, rgba(44, 246, 196, 0.22), transparent 65%),
+    radial-gradient(circle at 70% 70%, rgba(0, 194, 255, 0.2), transparent 60%);
 }
 
 .brand-tag {
@@ -119,7 +168,7 @@ a {
 .nav {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
 .nav a {
@@ -134,8 +183,21 @@ a {
 
 .nav a:hover {
   color: var(--text);
-  border-color: rgba(219, 0, 0, 0.45);
-  background: rgba(219, 0, 0, 0.07);
+  border-color: rgba(44, 246, 196, 0.32);
+  background: rgba(44, 246, 196, 0.06);
+}
+
+.nav a.cta {
+  color: rgba(255, 255, 255, 0.92);
+  border-color: rgba(44, 246, 196, 0.55);
+  background: rgba(44, 246, 196, 0.06);
+  padding: 9px 14px;
+  border-radius: 12px;
+}
+
+.nav a.cta:hover {
+  border-color: rgba(44, 246, 196, 0.85);
+  background: rgba(44, 246, 196, 0.1);
 }
 
 .hero {
@@ -155,7 +217,7 @@ a {
 }
 
 .hero-title span {
-  color: var(--green);
+  color: var(--accent);
 }
 
 .hero-subtitle {

@@ -1,13 +1,40 @@
 <main class="container">
-  <section class="hero">
-    <div class="hero-kicker">/sys/knowledge-base • build: local</div>
-    <h1 class="hero-title">
-      Project <span>NULL_POINTER</span>
-    </h1>
-    <p class="hero-subtitle">
-      A cyber-noir technical resource hub: cheat sheets, tutorials, the toolset, and the manifesto. Designed for speed,
-      clarity, and SEO-first publishing.
-    </p>
+  <section class="hero hero-split">
+    <div class="hero-left">
+      <div class="hero-badges">
+        <span class="badge">Total Security</span>
+        <span class="badge">Zero Compromise</span>
+      </div>
+
+      <h1 class="hero-title">
+        Secure Your <span>Digital</span><br />
+        Future With<br />
+        <span>NULL_POINTER</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        A cyber-noir technical resource hub: cheat sheets, tutorials, tools, and PFE references. Built for speed,
+        clarity, and SEO-first publishing.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn primary" routerLink="/tutorials">Get started</a>
+        <a class="btn secondary" routerLink="/pfe-books">Browse books</a>
+      </div>
+    </div>
+
+    <div class="hero-right" aria-hidden="true">
+      <div class="radar">
+        <div class="radar-sweep"></div>
+        <div class="pulse p1"></div>
+        <div class="pulse p2"></div>
+        <div class="pulse p3"></div>
+        <div class="blip b1"></div>
+        <div class="blip b2"></div>
+        <div class="blip b3"></div>
+        <div class="noise"></div>
+      </div>
+    </div>
   </section>
 
   <section class="bento">
@@ -49,6 +76,14 @@
         PFE Books
       </h2>
       <p class="tile-desc">PDF references and project-oriented resources for PFE work.</p>
+    </a>
+
+    <a class="tile span-6" routerLink="/live-attacks">
+      <h2 class="tile-title">
+        <span class="tile-badge">live</span>
+        Live Attacks
+      </h2>
+      <p class="tile-desc">External live threat map embedded with a fallback link.</p>
     </a>
   </section>
 </main>
